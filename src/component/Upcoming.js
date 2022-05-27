@@ -48,11 +48,13 @@ export default function (props) {
                     const minutes = "0" + date.getMinutes();
                     const formattedTime = `${hours}:${minutes.substr(-2)}`;
                     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                    const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
                     const year = date.getFullYear();
-                    // console.log(year)
+                    const Day = days[date.getDay()];
+                    console.log(Day)
                     const month = months[date.getMonth()];
                     const dt = date.getDate();
-                    const formatteddate = `${year}-${month}- ${dt}`;
+                    const formatteddate = `${Day}-${year}-${month}- ${dt}`;
 
 
 
