@@ -1,47 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap';
 
-export default function PastData() {
-     //state
-     const [data, setData] = useState([]);
 
-     useEffect(()=>{
-         getData();
-     },[])
- 
- 
-     //function 
-     let getData = ()=>{
-         try {
-           fetch('https://staging-api.dahmakan.com/test/orders')
-           .then((response)=>{
-             return response.json();
-           }).then((res)=>{
-            // console.log(res)
-     
-             console.log("res",res.orders)
-             setData(res.orders);
-           })
-         } catch (error) {
-           console.log(error) 
-         }
-       }
- 
-       //shorting data 
-       data.sort(function(a, b){
-         //  console.log("a",a)
-         // console.log("b",b)
-         return a.arrives_at_utc - b.arrives_at_utc ;
-       });
-       // filter data
+export default function PastData(props) {
+     //state
+    //function
+    // filter data
 
        function checkAdult(d) {
             // console.log("s",d)
             var todayunixtime = Math.floor(new Date().getTime() / 1000);
             var x = todayunixtime *1000;
-            return d.arrives_at_utc <= x ;
+            return d.arrives_at_utc < x ;
         }
-       var pastData = data.filter(checkAdult);
+       var pastData = props.data.filter(checkAdult);
  
  
  
